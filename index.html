@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohamed Rafiq - Personal Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header {
+            background-color: #0077cc;
+            color: white;
+            padding: 20px;
+        }
+        header img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        header img.loaded {
+            opacity: 1;
+        }
+        h1, p {
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        section {
+            padding: 20px;
+        }
+        .certificates {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .certificate-card {
+            background-color: white;
+            margin: 10px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .certificate-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="mohamed.jpg" alt="Mohamed Rafiq">
+        <h1>Mohamed Rafeek</h1>
+        <p>Student at Faculty of Medical Sciences - Analysis Department</p>
+        <p id="age"></p>
+    </header>
+
+    <section>
+        <h2>Certificates and Achievements</h2>
+        <div class="certificates">
+            <div class="certificate-card">Certificates of Appreciation from Mansoura University</div>
+            <div class="certificate-card">English Language Certificate from Cairo University</div>
+            <div class="certificate-card">Training certificate from the military hospital</div>
+            <div class="certificate-card">Ideal Student at Al-Hawamidiyah Administration 2022</div>
+            <div class="certificate-card">First Place in Quran Recitation Competition 2016</div>
+            <div class="certificate-card">First Place at Misr University for Science and Technology in the Annual Religious Competition for the Prophet's Birthday</div>
+            <div class="certificate-card">Second Place in Fine Arts Competition 2018</div>
+            <div class="certificate-card">First Place in Ramadan Quran Recitation Competition 2015</div>
+        </div>
+    </section>
+
+    <script>
+        // Calculate age automatically
+        function calculateAge(birthDate) {
+            const today = new Date();
+            const birth = new Date(birthDate);
+            let age = today.getFullYear() - birth.getFullYear();
+            const m = today.getMonth() - birth.getMonth();
+            if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) {
+                age--;
+            }
+            return age;
+        }
+
+        document.getElementById('age').innerText = "Age: " + calculateAge('2005-06-29') + " years";
+
+        // Image fade-in effect
+        document.querySelector("img").addEventListener("load", function() {
+            this.classList.add("loaded");
+        });
+    </script>
+</body>
+</html>
